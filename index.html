@@ -7,7 +7,7 @@
 		<title>Redis for Magento developers</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/custom.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -45,8 +45,48 @@
 						<li><strong>Intermediate tips:</strong> Redis configuration tips. Security concerns</li>
 						<li><strong>Expert level:</strong> Performance considerations. Debugging tips</li>
 					</ul>
-
 				</section>
+
+				<!-- 4. Browser Caching -->
+				<section>
+					<section>
+						<h1>The basics</h1>
+					</section>
+					<section>
+						<h2>What is Redis?</h1>
+						<p>Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker</p>
+						<p><a href="https://redis.io/">https://redis.io/</a></p>
+					</section>
+					<section>
+						<h3>What is Redis?</h3>
+						<img src="img/redis-github.png" alt="Screenshot of Redis GitHub repo" width="700">
+						<p><a href="https://redis.io/">https://redis.io/</a></p>
+						<aside class="notes">
+							It's on GitHub!
+						</aside>
+					</section>
+					<section>
+						<h3>What is Redis?</h3>
+						<div class="row">
+							<div class="column">
+								<img src="img/antirez-website.png" alt="Screenshot of antirez.com homepage">
+								<p style="font-size: 24px"><a href="https://redis.io/">http://antirez.com/</a></p>
+							</div>
+							<div class="column">
+								<img src="img/antirez-twitter.png" alt="Screenshot of Antirez twitter">
+								<p style="font-size: 24px"><a href="https://twitter.com/antirez">https://twitter.com/antirez</a></p>
+							</div>
+						</div>
+						<aside class="notes">
+							It's was created by Salvatore Sanfilippo (a.k.k antirez). Check out his website and follow him on Twitter.
+						</aside>
+					</section>
+				</section>
+
+				<!--
+					- Monitoring Redis (New Relic plugin)
+					- ASYNC FLUSHDB (avoiding downtime)
+				-->
 			</div>
 		</div>
 
