@@ -41,7 +41,7 @@
 				<section>
 					<h2>What Will We Cover?</h2>
 					<ul>
-						<li><strong>The basics:</strong> What is Redis? Why Redis? How Magento uses Redis?</li>
+						<li><strong>The basics:</strong> What is Redis? Why Redis? Basic Usage? How Magento uses Redis?</li>
 						<li><strong>Intermediate tips:</strong> Redis configuration tips. Security concerns</li>
 						<li><strong>Expert level:</strong> Performance considerations. Debugging tips</li>
 					</ul>
@@ -58,15 +58,13 @@
 						<p><a href="https://redis.io/">https://redis.io/</a></p>
 					</section>
 					<section>
-						<h3>What is Redis?</h3>
 						<img src="img/redis-github.png" alt="Screenshot of Redis GitHub repo" width="700">
-						<p><a href="https://redis.io/">https://redis.io/</a></p>
+						<p><a href="https://github.com/antirez/redis">https://github.com/antirez/redis</a></p>
 						<aside class="notes">
 							It's on GitHub!
 						</aside>
 					</section>
 					<section>
-						<h3>What is Redis?</h3>
 						<div class="row">
 							<div class="column">
 								<img src="img/antirez-website.png" alt="Screenshot of antirez.com homepage">
@@ -80,6 +78,68 @@
 						<aside class="notes">
 							It's was created by Salvatore Sanfilippo (a.k.k antirez). Check out his website and follow him on Twitter.
 						</aside>
+					</section>
+					<section>
+						<h2>Why Redis?</h1>
+						<li class="fragment">In memory == FAST</li>
+						<li class="fragment">Many <a href="https://devdocs.magento.com/guides/m1x/ce18-ee113/using_redis.html">advantages</a> over memcached</li>
+						<li class="fragment"><a href="https://twitter.com/maxpchadwick/status/751404484702638080">Most popular</a> cache backend for Magento</li>
+					</section>
+					<section data-markdown>
+						## Basic Usage
+						```bash
+						# Connect
+						$ redis-cli -h HOST -p PORT
+						# Human readable information and statistics
+						127.0.0.1:6379> INFO
+						OK
+						# Get a config value
+						127.0.0.1:6379> CONFIG GET maxmemory
+						OK
+						# Flushing a database
+						127.0.0.1:6379> SELECT 0
+						OK
+						127.0.0.1:6379> FLUSHDB
+						OK
+						```
+					</section>
+					<section data-markdown>
+						## Be CAREFUL!
+						```bash
+						# Show all keys - May cause service interruption
+						127.0.0.1:6379> KEYS *
+						OK
+						# Whoops - Cleared all the sessions
+						127.0.0.1:6379> FLUSHALL
+						OK
+						```
+					</section>
+					<section>
+						<h2>How Magento Uses Redis</h2>
+						<li class="fragment">"Object" cache</li>
+						<li class="fragment">Session storage</li>
+						<li class="fragment">Page cache (only recommended for Magento 1)</li>
+					</section>
+					<section>
+						<h2>Redis Hashes / Hash Commands</h2>
+						<li class="fragment"><code>HGET</code></li>
+						<li class="fragment"><code>HSET</code></li>
+						<li class="fragment"><code>HMSET</code></li>
+						<li class="fragment"><code>HGETALL</code></li>
+					</section>
+					<section data-markdown>
+						## Inspecting the cache
+						```bash
+						127.0.0.1:6379> HGETALL zc:k:06f_CORE_CACHE_INVALIDATE
+						1) "d"
+						2) "a:1:{s:9:\"full_page\";i:1;}"
+						3) "t"
+						4) "06f_MAGE"
+						5) "m"
+						6) "1533829835"
+						7) "i"
+						8) "1"
+						```
 					</section>
 				</section>
 
@@ -98,6 +158,7 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				history: true,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
