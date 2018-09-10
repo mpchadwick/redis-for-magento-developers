@@ -165,6 +165,35 @@
 					</section>
 				</section>
 
+				<!-- 5. Intermediate Tips -->
+				<section>
+					<section>
+						<h1>Intermediate tips</h1>
+					</section>
+					<section>
+						<h2>Memory Management</h2>
+						<li class="fragment">Set maxmemory or Redis could (theoretically) consume all the available memory on the box</li>
+						<li class="fragment">Monitor used memory and configure alerts</li>
+						<li class="fragment">Understand maxmemory-policies: (allkeys-lru is safest)</li>
+					</section>
+					<section data-markdown>
+						## Setting maxmemory
+						### At runtime
+						```bash
+						127.0.0.1:6379> CONFIG SET maxmemory 1073741824
+						OK
+						```
+					</section>
+					<section data-markdown>
+						## Setting maxmemory
+						### In the config file
+						```bash
+						$ grep maxmemory /etc/redis/redis.conf
+						maxmemory 1gb
+						```
+					</section>
+				</section>
+
 				<!--
 					- Monitoring Redis (New Relic plugin)
 					- ASYNC FLUSHDB (avoiding downtime)
