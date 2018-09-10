@@ -174,7 +174,8 @@
 						<h2>Memory Management</h2>
 						<li class="fragment">Set maxmemory or Redis could (theoretically) consume all the available memory on the box</li>
 						<li class="fragment">Monitor used memory and configure alerts</li>
-						<li class="fragment">Understand maxmemory-policies: (allkeys-lru is safest)</li>
+						<li class="fragment">Use separate redis instances (not separate dbs)</li>
+						<li class="fragment">Understand maxmemory-policies</li>
 					</section>
 					<section data-markdown>
 						## Setting maxmemory
@@ -191,6 +192,19 @@
 						$ grep maxmemory /etc/redis/redis.conf
 						maxmemory 1gb
 						```
+					</section>
+					<section>
+						<h2>Monitor Memory Usage</h2>
+						<img src="img/new-relic-redis.png" width="600">
+						<p style="font-size: 24px"><a href="https://newrelic.com/plugins/poison-pen-llc/28">https://newrelic.com/plugins/poison-pen-llc/28</a></p>
+					</section>
+					<section>
+						<h2>Monitor Memory Usage</h2>
+						<img src="img/new-relic-redis-dashboard.jpg" width="700">
+					</section>
+					<section>
+						<h2>Monitor Memory Usage</h2>
+						<img src="img/new-relic-redis-alert.png" width="700">
 					</section>
 				</section>
 
