@@ -92,10 +92,10 @@
 						$ redis-cli -h HOST -p PORT
 						# Human readable information and statistics
 						127.0.0.1:6379> INFO
-						OK
-						# Get a config value
-						127.0.0.1:6379> CONFIG GET maxmemory
-						OK
+						redis_version:3.2.8
+						redis_git_sha1:00000000
+						redis_git_dirty:0
+						...
 						# Flushing a database
 						127.0.0.1:6379> SELECT 0
 						OK
@@ -108,7 +108,10 @@
 						```bash
 						# Show all keys - May cause service interruption
 						127.0.0.1:6379> KEYS *
-						OK
+						  1) "zc:ti:a04_CHECKOUT_ONEPAGE_PROGRESS_SHIPPING_METHOD"
+						  2) "zc:ti:a04_ADMINHTML_DASHBOARD_INDEX"
+						  3) "zc:k:a04_Zend_LocaleC_en_US_country_CK"
+						  ...
 						# Whoops - Cleared all the sessions
 						127.0.0.1:6379> FLUSHALL
 						OK
@@ -172,7 +175,7 @@
 					</section>
 					<section>
 						<h2>Memory Management</h2>
-						<li class="fragment">Set maxmemory or Redis could (theoretically) consume all the available memory on the box</li>
+						<li class="fragment">Set maxmemory or Redis could consume all the available memory on the box</li>
 						<li class="fragment">Monitor used memory and configure alerts</li>
 						<li class="fragment">Use separate redis instances (not separate dbs)</li>
 						<li class="fragment">Understand maxmemory-policies</li>
@@ -203,8 +206,24 @@
 						<img src="img/new-relic-redis-dashboard.jpg" width="700">
 					</section>
 					<section>
-						<h2>Monitor Memory Usage</h2>
+						<h2>Configure Alerts</h2>
 						<img src="img/new-relic-redis-alert.png" width="700">
+					</section>
+					<section>
+						<h2>maxmemory-policies</h2>
+						<li class="fragment"><strong>noeviction:</strong> NOTHING gets evicted when maxmemory is hit</li>
+						<li class="fragment"><strong>allkeys-lru:</strong> Use the LRU algorithm to evict from ALL KEYS (don't need TTL set)</li>
+						<li class="fragment"><strong>volatile-lru:</strong> Use the LRU to evict keys with TTL set</li>
+					</section>
+					<section>
+						<h2>maxmemory-policies</h2>
+						<li class="fragment"><strong>allkeys-random:</strong> Randomly evict from ALL KEYS</li>
+						<li class="fragment"><strong>volatile-random:</strong> Randomly evict from keys with TTL set</li>
+						<li class="fragment"><strong>volatile-ttl:</strong> Evict keys with shortest TTL</li>
+					</section>
+					<section>
+						<h2>maxmemory-policies</h2>
+						<strong>allkeys-lru</strong> is the safest!
 					</section>
 				</section>
 
