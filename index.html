@@ -210,6 +210,12 @@
 						<img src="img/new-relic-redis-alert.png" width="700">
 					</section>
 					<section>
+						<h2>Use separate instances</h2>
+						<li class="fragment">Tune maxmemory per storage type</li>
+						<li class="fragment">Reduce FLUSHALL risk</li>
+						<li class="fragment">Multiple execution threads</li>
+					</section>
+					<section>
 						<h2>maxmemory-policies</h2>
 						<li class="fragment"><strong>noeviction:</strong> NOTHING gets evicted when maxmemory is hit</li>
 						<li class="fragment"><strong>allkeys-lru:</strong> Use the LRU algorithm to evict from ALL KEYS (don't need TTL set)</li>
