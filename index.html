@@ -33,7 +33,7 @@
 					<ul>
 					<li class="fragment">Technical Lead for Strategic Engagement Group at <a href="https://www.somethingdigital.com/">Something Digital</a> (Magento Enterprise Solution Partner)</li>
 					<li class="fragment">Actively <a href="https://maxchadwick.xyz/blog/">blogging</a> about Magento and other technology</li>
-					<li class="fragment">Spoken at <a href="https://nomadmage.com/product/monitoring-improving-full-page-cache-hit-rate-enterprise_pagecache/">NomadMage</a>, <a href="https://www.meetup.com/NYC-Magento-Developers/events/233797698/">NYC Magento meetup</a> about caching.</li>
+					<li class="fragment">Open source contributor on <a href="https://github.com/mpchadwick">GitHub</a></li>
 					</ul>
 				</section>
 
@@ -54,7 +54,7 @@
 					</section>
 					<section>
 						<h2>What is Redis?</h1>
-						<p>Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker</p>
+						<p>Redis is an open source, in-memory data structure store, used as a database, cache and message broker</p>
 						<p><a href="https://redis.io/">https://redis.io/</a></p>
 					</section>
 					<section>
@@ -82,7 +82,7 @@
 					<section>
 						<h2>Why Redis?</h1>
 						<li class="fragment">In memory == FAST</li>
-						<li class="fragment">Many <a href="https://devdocs.magento.com/guides/m1x/ce18-ee113/using_redis.html">advantages</a> over memcached</li>
+						<li class="fragment"><a href="https://devdocs.magento.com/guides/m1x/ce18-ee113/using_redis.html">Advantages</a> compared memcached (on-disk save, replication, better eviction control...)</li>
 						<li class="fragment"><a href="https://twitter.com/maxpchadwick/status/751404484702638080">Most popular</a> cache backend for Magento</li>
 					</section>
 					<section data-markdown>
@@ -125,10 +125,10 @@
 					</section>
 					<section>
 						<h2>Redis Hashes / Hash Commands</h2>
-						<li class="fragment"><code>HGET</code></li>
-						<li class="fragment"><code>HSET</code></li>
-						<li class="fragment"><code>HMSET</code></li>
-						<li class="fragment"><code>HGETALL</code></li>
+						<li class="fragment"><code>HGETALL hash</code></li>
+						<li class="fragment"><code>HGET hash field</code></li>
+						<li class="fragment"><code>HSET hash field "value"</code></li>
+						<li class="fragment"><code>HMSET hash field1 "value1" field2 "value2"</code></li>
 					</section>
 					<section data-markdown>
 						## Inspecting the cache
@@ -151,19 +151,9 @@
 						1) "i"
 						2) "1"
 						3) "t"
-						4) "f2e_DEFAULT,f2e_CMS_PAGE,f2e_STORE_DEFAULT,f2e_THEME_FRONTEND_RITEAID_RITE_AID,f2e_CMS_INDEX_INDEX,f2e_PAGE_TWO_COLUMNS_LEFT,f2e_CUSTOMER_LOGGED_OUT,f2e_LAYOUT_GENERAL_CACHE_TAG,f2e_MAGE"
+						4) "f2e_DEFAULT,f2e_CMS_PAGE,f2e_STORE_DEFAULT,f2e_CMS_INDEX_INDEX,f2e_PAGE_TWO_COLUMNS_LEFT,f2e_CUSTOMER_LOGGED_OUT,f2e_LAYOUT_GENERAL_CACHE_TAG,f2e_MAGE"
 						5) "d"
 						6) "gz:\x1f\x8bx\x01\xed]\xdd\x8f\xdbHr\x7f\xbe\xfd+\x84y\b\x92\a\x89\xeb=$9 3\x02\xd6\x83\xbd\xac\x0f\xb6\xe3\xac}\x17 /\x04%\xf5H\xf4P\xa4\xcc\x8f\x19\xcf\xfe\xf5\xf9UW\x7f\xb3IQ\x1aM\xceH\x0cc`\xb1\xd9]]]]]_]\xdd\xbc^\x15\xd5\xfa~Vf{qsuW\xd5\xfb{\xf1t5k\x9f\x0ex\\W\xb5HZ\xb1?\x14Y+P\xa8~\xa9\x17\xaa\xf2\xe2\xb0k\xf7\xc5U\xb2\xfc\xe1\xba\xc8V\xa2X\xfe\\\x14\xb3\x0f\xd9V4\xd7\t\x17\xfcp\xcd}0\xd0\x03^%\xb2\x89\xea\xb4\xae\xaa\xf6jVu\xed\xa1ko\xae\xda\xeaW\x02\xe7t&\x1b\xfcq]\x15\xdd\xbelTo\xcb\
-						```
-					</section>
-					<section data-markdown>
-						## Taking a backup
-						```bash
-						127.0.0.1:6379> BGSAVE
-						Background saving started
-						127.0.0.1:6379> CONFIG GET DIR
-						1) "dir"
-						2) "/var/lib/redis"
 						```
 					</section>
 				</section>
