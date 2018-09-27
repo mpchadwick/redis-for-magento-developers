@@ -249,8 +249,76 @@
 					</section>
 				</section>
 
+				<!-- 4. The basics -->
+				<section>
+					<section>
+						<h1>Expert Level</h1>
+					</section>
+					<section>
+						<h2>Performance</h2>
+						"Usually Redis processing time is extremely low, in the sub microsecond range"
+						<p><a href="https://redis.io/topics/latency">https://redis.io/topics/latency</a></p>
+					</section>
+					<section>
+						<h2>Performance</h2>
+						"It is a good practice to use the ping program to quickly check the latency between the client and server hosts"
+						<p><a href="https://redis.io/topics/benchmarks">https://redis.io/topics/benchmarks</a></p>
+					</section>
+					<section>
+						<h2>Performance</h2>
+						<img src="img/new-relic-redis-hgets.png" width="700">
+						<p>Magento is <em>very</em> chatty with Redis</p>
+					</section>
+					<section>
+						<h2>Performance</h2>
+						<img src="img/redis-hget-stats.png" width="700">
+						<p>Survey of /catalog/category/view for 8 production Magento instances</p>
+					</section>
+					<section data-markdown>
+						## Performance
+						```bash
+						$ ping -c 10 172.24.32.122
+						PING 172.24.32.122 (172.24.32.122) 56(84) bytes of data.
+						64 bytes from 172.24.32.122: icmp_seq=1 ttl=64 time=0.105 ms
+						64 bytes from 172.24.32.122: icmp_seq=2 ttl=64 time=0.086 ms
+						64 bytes from 172.24.32.122: icmp_seq=3 ttl=64 time=0.107 ms
+						64 bytes from 172.24.32.122: icmp_seq=4 ttl=64 time=0.081 ms
+						64 bytes from 172.24.32.122: icmp_seq=5 ttl=64 time=0.120 ms
+						64 bytes from 172.24.32.122: icmp_seq=6 ttl=64 time=0.130 ms
+						64 bytes from 172.24.32.122: icmp_seq=7 ttl=64 time=0.099 ms
+						64 bytes from 172.24.32.122: icmp_seq=8 ttl=64 time=0.079 ms
+						64 bytes from 172.24.32.122: icmp_seq=9 ttl=64 time=0.082 ms
+						64 bytes from 172.24.32.122: icmp_seq=10 ttl=64 time=0.076 ms
+
+						--- 172.24.32.122 ping statistics ---
+						10 packets transmitted, 10 received, 0% packet loss, time 9000ms
+						rtt min/avg/max/mdev = 0.076/0.096/0.130/0.020 ms
+						```
+					</section>
+					<section data-markdown>
+						## Performance
+						- `nping`
+						- `redis-cli --latency`
+						- `traceroute`
+						- `tcptraceroute`
+					</section>
+					<section data-markdown>
+						## Performance
+
+						Round trip time of more than 0.5ms is a red flag
+					</section>
+					<section data-markdown>
+						<!-- Best practice / red flags in terms of ping RTT -->
+					</section>
+					<section data-markdown>
+						<!-- nping -->
+					</section>
+					<section data-markdown>
+						<!-- Single threaded nature -->
+					</section>
+				</section>
+
 				<!--
-					- Monitoring Redis (New Relic plugin)
 					- ASYNC FLUSHDB (avoiding downtime)
 				-->
 			</div>
