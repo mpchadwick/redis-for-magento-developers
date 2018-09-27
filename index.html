@@ -275,7 +275,7 @@
 						<p>Survey of /catalog/category/view for 8 production Magento instances</p>
 					</section>
 					<section data-markdown>
-						## Performance
+						## Network Concerns
 						```bash
 						$ ping -c 10 172.24.32.122
 						PING 172.24.32.122 (172.24.32.122) 56(84) bytes of data.
@@ -296,25 +296,84 @@
 						```
 					</section>
 					<section data-markdown>
-						## Performance
+						## Network Concerns
 						- `nping`
 						- `redis-cli --latency`
 						- `traceroute`
 						- `tcptraceroute`
 					</section>
 					<section data-markdown>
-						## Performance
+						## Network Concerns
 
 						Round trip time of more than 0.5ms is a red flag
 					</section>
 					<section data-markdown>
-						<!-- Best practice / red flags in terms of ping RTT -->
+						## Performance
+
+						"Redis uses a mostly single threaded design"
+
+						https://redis.io/topics/latency#single-threaded-nature-of-redis
 					</section>
 					<section data-markdown>
-						<!-- nping -->
+						## Performance
+
+						"A consequence of being single thread is that when a request is slow to serve all the other clients will wait for this request to be served."
+
+						https://redis.io/topics/latency#latency-generated-by-slow-commands
 					</section>
 					<section data-markdown>
-						<!-- Single threaded nature -->
+						## Performance
+
+						"It is possible to monitor slow commands using the [Redis Slow Log](https://redis.io/commands/slowlog) feature."
+
+						https://redis.io/topics/latency#latency-generated-by-slow-commands
+					</section>
+					<section data-markdown>
+						## SLOWLOG threshold
+						### At runtime
+						```bash
+						127.0.0.1:6379> CONFIG SET slowlog-log-slower-than 10000
+						OK
+						```
+					</section>
+					<section data-markdown>
+						## SLOWLOG threshold
+						### In the config file
+						```bash
+						$ grep slowlog-log-slower-than /etc/redis/redis.conf
+						slowlog-log-slower-than 10000
+						```
+					</section>
+					<section data-markdown>
+						## Reading the slowlog
+						```bash
+						127.0.0.1:6379> SLOWLOG GET
+						 9) 1) (integer) 105
+						    2) (integer) 1538060008
+						    3) (integer) 593744
+						    4) 1) "SUNION"
+						       2) "zc:ti:a95_MAGE"
+						```
+					</section>
+					<section>
+						<h2>Reading the slowlog</h2>
+
+						<p style="font-size: 30px;">Every entry is composed of four (or six starting with Redis 4.0) fields:</p>
+						<ul style="font-size: 30px;">
+						<li>A unique progressive identifier for every slow log entry.</li>
+						<li>The unix timestamp at which the logged command was processed.</li>
+						<li>The amount of time needed for its execution, in microseconds</li>
+						<li>The array composing the arguments of the command.</li>
+						</ul>
+
+						<p><a href="https://redis.io/commands/slowlog">https://redis.io/commands/slowlog</a></p>
+
+					</section>
+					<section data-markdown>
+						## Proceed with caution
+
+						- KEYS * (Use SCAN / write a PHP script)
+						- FLUSHDB (FLUSHDB ASYNC was added in 4.0.0)
 					</section>
 				</section>
 
