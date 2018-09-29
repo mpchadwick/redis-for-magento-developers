@@ -395,6 +395,21 @@
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
+
+			Reveal.addEventListener('ready', function(event) {
+			    var q = window.location.search;
+			    if (q) {
+			        var mode = q.split('?mode=')[1];
+			        var hide = document.querySelectorAll('[data-not="' + mode + '"]');
+			        Array.prototype.forEach.call(hide, function(node) {
+			            node.parentNode.removeChild(node);
+			        });
+			        var show = document.querySelectorAll('[data-is="' + mode + '"]');
+			        Array.prototype.forEach.call(show, function(node) {
+			            node.style.display = "initial";
+			        });
+			    }
+			})
 		</script>
 	</body>
 </html>
