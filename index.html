@@ -169,7 +169,7 @@
 						<li class="fragment">Set maxmemory or Redis could consume all the available memory on the box</li>
 						<li class="fragment">Monitor used memory and configure alerts</li>
 						<li class="fragment">Use separate redis instances (not separate dbs)</li>
-						<li class="fragment">Understand maxmemory-policies</li>
+						<li class="fragment" data-not="30m">Understand maxmemory-policies</li>
 					</section>
 					<section data-markdown>
 						## Setting maxmemory
@@ -206,19 +206,19 @@
 						<li class="fragment">Reduce FLUSHALL risk</li>
 						<li class="fragment">Multiple execution threads</li>
 					</section>
-					<section>
+					<section data-not="30m">
 						<h2>maxmemory-policies</h2>
 						<li class="fragment"><strong>noeviction:</strong> NOTHING gets evicted when maxmemory is hit</li>
 						<li class="fragment"><strong>allkeys-lru:</strong> Use the LRU algorithm to evict from ALL KEYS (don't need TTL set)</li>
 						<li class="fragment"><strong>volatile-lru:</strong> Use the LRU to evict keys with TTL set</li>
 					</section>
-					<section>
+					<section data-not="30m">
 						<h2>maxmemory-policies</h2>
 						<li class="fragment"><strong>allkeys-random:</strong> Randomly evict from ALL KEYS</li>
 						<li class="fragment"><strong>volatile-random:</strong> Randomly evict from keys with TTL set</li>
 						<li class="fragment"><strong>volatile-ttl:</strong> Evict keys with shortest TTL</li>
 					</section>
-					<section>
+					<section data-not="30m">
 						<h2>maxmemory-policies</h2>
 						<strong>allkeys-lru</strong> is the safest!
 					</section>
