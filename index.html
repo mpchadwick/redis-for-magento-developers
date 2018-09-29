@@ -41,7 +41,8 @@
 				<section>
 					<h2>What Will We Cover?</h2>
 					<ul>
-						<li><strong>The basics:</strong> What is Redis? Why Redis? Basic Usage? How Magento uses Redis?</li>
+						<li data-not="30m"><strong>The basics:</strong> What is Redis? Why Redis? Basic Usage? How Magento uses Redis?</li>
+						<li data-is="30m"><strong>The basics:</strong> What is Redis? Why Redis? Basic Usage?</li>
 						<li><strong>Intermediate tips:</strong> Redis configuration tips. Security concerns</li>
 						<li><strong>Expert level:</strong> Performance considerations. Debugging tips</li>
 					</ul>
@@ -117,20 +118,20 @@
 						OK
 						```
 					</section>
-					<section>
+					<section data-not="30m">
 						<h2>How Magento Uses Redis</h2>
 						<li class="fragment">"Object" cache</li>
 						<li class="fragment">Session storage</li>
 						<li class="fragment">Page cache (only recommended for Magento 1)</li>
 					</section>
-					<section>
+					<section data-not="30m">
 						<h2>Redis Hashes / Hash Commands</h2>
 						<li class="fragment"><code>HGETALL hash</code></li>
 						<li class="fragment"><code>HGET hash field</code></li>
 						<li class="fragment"><code>HSET hash field "value"</code></li>
 						<li class="fragment"><code>HMSET hash field1 "value1" field2 "value2"</code></li>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-not="30m">
 						## Inspecting the cache
 						```bash
 						127.0.0.1:6379> HGETALL zc:k:06f_CORE_CACHE_INVALIDATE
@@ -144,7 +145,7 @@
 						8) "1"
 						```
 					</section>
-					<section data-markdown>
+					<section data-markdown data-not="30m">
 						## It may look like this!
 						```bash
 						127.0.0.1:6379> HGETALL zc:k:f2e_LAYOUT_10C0D9697E6059BB2948C1CF25BEDE677
